@@ -1,9 +1,9 @@
 streamlit
 python-dotenv
 langchain
-langchain_community
-langchain-groq
+langchain-community
 langchain-chroma
 langchain-huggingface
-Pypdf
-sentence-transformers
+langchain-groq
+pypdf
+sentence transformenrs
