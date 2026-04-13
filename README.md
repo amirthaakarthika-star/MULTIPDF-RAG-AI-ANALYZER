@@ -32,3 +32,16 @@ This project is an AI-powered multi-document assistant that analyzes PDFs using 
 git clone https://github.com/amirthaakarthika-star/MULTICLOUD-RAG-AI-PDF-INTELLIGENCE.git
 cd MULTICLOUD-RAG-AI-PDF-INTELLIGENCE
 pip install -r requirements.txt
+## 📸 Screenshots
+
+### 🖥️ UI
+![UI](ui.png)
+
+### ⚙️ Processing Documents
+![Processing](processing.png)
+
+### 🧠 AI Answer Output
+![Answer](answer.png)
+
+### 🔍 Debug View (Explainable AI)
+![Debug](debug.png)
