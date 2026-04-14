@@ -7,3 +7,5 @@ langchain-huggingface
 langchain-groq
 pypdf
 sentence transformenrs
+reportlab
+langchain-text-splitters
