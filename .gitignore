@@ -3,3 +3,7 @@ _pycache_/
 *.py[cod]
 venv/
 .streamlit/
+.vscode/
+db/
+*.bin
+*.sqlite3
