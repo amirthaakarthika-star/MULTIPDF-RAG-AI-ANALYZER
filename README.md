@@ -96,6 +96,87 @@ flowchart TD
 
 
 ---
+## 🧠 Engineering Challenges & Solutions
+
+### 1. Retrieval Quality Across Multiple PDFs
+
+**The Challenge:**
+When querying multiple uploaded PDFs, early retrieval results sometimes favored chunks from one dominant document, causing incomplete answers or missed information from other files.
+
+**The Solution:**
+
+* Tuned `chunk_size` and `chunk_overlap` for better context preservation.
+* Optimized retriever search parameters through iterative testing.
+* Replaced basic similarity search with **Maximal Marginal Relevance (MMR)** retrieval.
+* MMR improves diversity by selecting relevant chunks while reducing repetitive results from the same source.
+
+**Outcome:**
+More balanced retrieval across multiple PDFs and stronger cross-document question answering.
+
+---
+
+### 2. API Quota Limits & Response Speed
+
+**The Challenge:**
+Initial development using Google Gemini encountered free-tier quota limits and interrupted testing workflows.
+
+**The Solution:**
+
+* Evaluated alternative LLM providers based on speed and usability.
+* Migrated inference to **Groq API** for faster response times.
+* Moved API credentials to environment variables for easier configuration and provider switching.
+
+**Outcome:**
+Smoother development cycles, faster responses, and improved user experience.
+
+---
+
+### 3. Managing Rapidly Changing Dependencies
+
+**The Challenge:**
+Frequent LangChain updates, renamed modules, and dependency changes created import and compatibility issues during development.
+
+**The Solution:**
+
+* Updated imports to match the latest package structure.
+* Pinned stable versions where needed.
+* Improved maintainability through modular configuration.
+
+**Outcome:**
+Better project stability and easier future upgrades.
+
+---
+
+### 4. Performance Optimization for Large PDFs
+
+**The Challenge:**
+Processing large PDF files and multiple uploads increased memory usage and slowed response workflows.
+
+**The Solution:**
+
+* Optimized document ingestion flow.
+* Reduced unnecessary overhead in retrieval steps.
+* Used efficient vector search workflows.
+
+**Outcome:**
+Improved responsiveness and smoother handling of larger documents.
+
+---
+
+### 5. UI / UX Refinement
+
+**The Challenge:**
+As features expanded, chat history and debug outputs made the interface cluttered.
+
+**The Solution:**
+
+* Moved chat history to the sidebar.
+* Improved debug mode formatting.
+* Added response timing and cleaner controls.
+
+**Outcome:**
+Cleaner user experience and more professional interface presentation.
+
 ## 🖥️ How to Run
 
 ```bash
