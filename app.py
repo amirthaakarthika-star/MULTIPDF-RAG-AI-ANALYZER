@@ -19,10 +19,61 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 if not groq_api_key:
     st.error("❌ Missing GROQ API Key. Please set it in .env file.")
     st.stop()
-
-# -------------------- STREAMLIT SETUP --------------------
+# ---------- STREAMLIT SETUP ----------
 st.set_page_config(page_title="MULTI-PDF EXPERT", layout="wide")
-st.title("📄 AI POWERED MULTI PDF INTELLIGENCE")
+
+# ADD THE STYLING AND HERO BOX HERE (Replacing st.title)
+st.markdown("""
+<style>
+    .hero-box {
+        padding: 2rem;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        margin-bottom: 2rem;
+        color: #F4F4F4;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, #22D3EE, #818CF8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+    }
+    .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .badge {
+        padding: 5px 15px;
+        border-radius: 12px;
+        background: rgba(34, 211, 238, 0.1);
+        border: 1px solid rgba(34, 211, 238, 0.5);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #22D3EE;
+    }
+</style>
+
+<div class="hero-box">
+    <div class="hero-title">📄 Multi-PDF Intelligence Hub</div>
+    <div style="font-size: 1.1rem; opacity: 0.8;">
+        Next-gen RAG Analysis with Groq-speed inference and Legal-grade precision.
+    </div>
+    <div class="badge-row">
+        <div class="badge">⚡ Groq LPU</div>
+        <div class="badge">🧠 LangChain</div>
+        <div class="badge">📚 Multi-PDF</div>
+        <div class="badge">⚖️ Legal Mode</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # -------------------- SESSION STATE --------------------
 if "vector_store" not in st.session_state:
@@ -130,13 +181,33 @@ with st.sidebar:
 mode = st.radio("Select Mode:", ["General Q&A", "Legal Analysis"])
 show_chunks = st.checkbox("🔍 Show Retrieved Context (Debug Mode)")
 
-# -------------------- QUERY --------------------
-st.markdown("### 💡 Sample Questions")
-st.write("- Summarize the uploaded PDFs")
-st.write("- What are the key legal risks?")
-st.write("- Compare the uploaded documents")
-st.write("- What deadlines are mentioned?")
-query = st.text_input("Ask your question:")
+
+# ---------- QUERY & INTERACTIVE SAMPLES ----------
+st.markdown("### 💡 Quick Analysis")
+
+# Create a container for buttons to keep them organized
+with st.container():
+    col1, col2 = st.columns(2)
+    col3, col4 = st.columns(2)
+    
+    # Initialize a variable to catch the button click
+    selected_sample = None
+
+    with col1:
+        if st.button("📊 Summarize Documents", use_container_width=True):
+            selected_sample = "Summarize the uploaded PDFs in detail."
+    with col2:
+        if st.button("⚖️ Legal Risk Analysis", use_container_width=True):
+            selected_sample = "What are the key legal risks found in these documents?"
+    with col3:
+        if st.button("🔄 Compare Documents", use_container_width=True):
+            selected_sample = "Compare the uploaded documents and highlight the main differences."
+    with col4:
+        if st.button("📅 Check Deadlines", use_container_width=True):
+            selected_sample = "What are the important dates and deadlines mentioned in these files?"
+
+# The main text input
+query = st.text_input("Ask your question:", value=selected_sample if selected_sample else "")
 
 if query and st.session_state.vector_store:
 
@@ -253,4 +324,3 @@ if query and st.session_state.vector_store:
 
 elif query and not st.session_state.vector_store:
     st.warning("Please upload PDFs and build knowledge base first")
-
