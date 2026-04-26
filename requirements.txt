@@ -9,3 +9,5 @@ pypdf
 sentence-transformers
 reportlab
 langchain-text-splitters
+protobuf==3.20.3
+
