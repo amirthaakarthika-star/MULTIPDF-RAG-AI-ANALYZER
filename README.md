@@ -114,22 +114,6 @@ GROQ_API_KEY=your_groq_api_key_here
 streamlit run app.py
 ```
 
-## Screenshots
-
-### Main UI
-![Main UI](cleanui.png)
-
-### Processing PDFs
-![Processing PDFs](processing.png)
-
-### Debug View
-![Debug View](debug.png)
-
-### Chat History
-![Chat History](chathistory.png)
-
-### PDF Export
-![PDF Export](downloadans.png)
 
 ## Limitations
 
